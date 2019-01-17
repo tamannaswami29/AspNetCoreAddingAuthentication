@@ -53,7 +53,7 @@ namespace WishListTests
             {
                 file = streamReader.ReadToEnd();
             }
-            Assert.True(file.Contains("LoginViewModel"),"`Login.cshtml` was found, but does not appear to contain the provided view (copy and paste the login view from the associated task in the `readme.md` file)");
+            Assert.True(file.Contains("LoginViewModel"), "`Login.cshtml` was found, but does not appear to contain the provided view (copy and paste the login view from the associated task in the `readme.md` file)");
         }
 
         [Fact(DisplayName = "Create HttpGet Login Action @create-httpget-login-action")]
@@ -62,10 +62,11 @@ namespace WishListTests
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "WishList" + Path.DirectorySeparatorChar + "Controllers" + Path.DirectorySeparatorChar + "AccountController.cs";
             Assert.True(File.Exists(filePath), @"`AccountController.cs` was not found in the `Controllers` folder.");
 
-            var accountController = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.FullName == "WishList.Controllers.AccountController"
-                                     select type).FirstOrDefault();
+            var accountController = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                    //from type in assembly.GetTypes()
+                                    //where type.FullName == "WishList.Controllers.AccountController"
+                                    // select type).FirstOrDefault();
+                                     typeof(WishList.Controllers.AccountController);
             Assert.True(accountController != null, "A `public` class `AccountController` was not found in the `WishList.Controllers` namespace.");
             var method = accountController.GetMethod("Login", new Type[] { });
             Assert.True(method != null, "`AccountController` did not contain a `public` `Login` method with no parameters");
@@ -96,10 +97,11 @@ namespace WishListTests
                                      select type).FirstOrDefault();
             Assert.True(accountController != null, "A `public` class `AccountController` was not found in the `WishList.Controllers` namespace.");
 
-            var loginViewModel = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.FullName == "WishList.Models.AccountViewModels.LoginViewModel"
-                                  select type).FirstOrDefault();
+            var loginViewModel = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                 // from type in assembly.GetTypes()
+                                 // where type.FullName == "WishList.Models.AccountViewModels.LoginViewModel"
+                                 // select type).FirstOrDefault();
+                                  typeof(WishList.Controllers.AccountController);
             Assert.True(loginViewModel != null, "A `public` class `LoginViewModel` was not found in the `WishList.Models.AccountViewModels` namespace.");
 
             var method = accountController.GetMethod("Login", new Type[] { loginViewModel });
@@ -108,7 +110,7 @@ namespace WishListTests
             Assert.True(method.CustomAttributes.FirstOrDefault(e => e.AttributeType == typeof(HttpPostAttribute)) != null, "`AccountController``s `Login` method did not have the `HttpPost` attribute.");
             Assert.True(method.CustomAttributes.FirstOrDefault(e => e.AttributeType == typeof(AllowAnonymousAttribute)) != null, "`AccountController`'s `Login` method did not have the `AllowAnonymous` attribute.");
             Assert.True(method.CustomAttributes.FirstOrDefault(e => e.AttributeType == typeof(ValidateAntiForgeryTokenAttribute)) != null, "`AccountController`'s `Login` method did not have the `ValidateAntiForgeryToken` attribute.");
-            
+
             var userStore = new Mock<IUserPasswordStore<ApplicationUser>>();
             var contextAccessor = new Mock<IHttpContextAccessor>();
             var claimsFactory = new Mock<IUserClaimsPrincipalFactory<ApplicationUser>>();
@@ -131,16 +133,18 @@ namespace WishListTests
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "WishList" + Path.DirectorySeparatorChar + "Controllers" + Path.DirectorySeparatorChar + "AccountController.cs";
             Assert.True(File.Exists(filePath), @"`AccountController.cs` was not found in the `Controllers` folder.");
 
-            var accountController = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.FullName == "WishList.Controllers.AccountController"
-                                     select type).FirstOrDefault();
+            var accountController = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                    // from type in assembly.GetTypes()
+                                    // where type.FullName == "WishList.Controllers.AccountController"
+                                    // select type).FirstOrDefault();
+                                     typeof(WishList.Controllers.AccountController);
             Assert.True(accountController != null, "A `public` class `AccountController` was not found in the `WishList.Controllers` namespace.");
 
-            var loginViewModel = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.FullName == "WishList.Models.AccountViewModels.LoginViewModel"
-                                  select type).FirstOrDefault();
+            var loginViewModel = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                 // from type in assembly.GetTypes()
+                                 //where type.FullName == "WishList.Models.AccountViewModels.LoginViewModel"
+                                 // select type).FirstOrDefault();
+                                  typeof(WishList.Controllers.AccountController);
             Assert.True(loginViewModel != null, "A `public` class `LoginViewModel` was not found in the `WishList.Models.AccountViewModels` namespace.");
 
             var method = accountController.GetMethod("Login", new Type[] { loginViewModel });
@@ -184,10 +188,11 @@ namespace WishListTests
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "WishList" + Path.DirectorySeparatorChar + "Controllers" + Path.DirectorySeparatorChar + "AccountController.cs";
             Assert.True(File.Exists(filePath), @"`AccountController.cs` was not found in the `Controllers` folder.");
 
-            var accountController = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.FullName == "WishList.Controllers.AccountController"
-                                     select type).FirstOrDefault();
+            var accountController = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                    // from type in assembly.GetTypes()
+                                    //where type.FullName == "WishList.Controllers.AccountController"
+                                    //select type).FirstOrDefault();
+                                      typeof(WishList.Controllers.AccountController);
             Assert.True(accountController != null, "A `public` class `AccountController` was not found in the `WishList.Controllers` namespace.");
 
             var loginViewModel = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
@@ -252,10 +257,11 @@ namespace WishListTests
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "WishList" + Path.DirectorySeparatorChar + "Controllers" + Path.DirectorySeparatorChar + "AccountController.cs";
             Assert.True(File.Exists(filePath), @"`AccountController.cs` was not found in the `Controllers` folder.");
 
-            var accountController = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                     from type in assembly.GetTypes()
-                                     where type.FullName == "WishList.Controllers.AccountController"
-                                     select type).FirstOrDefault();
+            var accountController = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                                    //from type in assembly.GetTypes()
+                                    //where type.FullName == "WishList.Controllers.AccountController"
+                                    //select type).FirstOrDefault();
+                                      typeof(WishList.Controllers.AccountController);
             Assert.True(accountController != null, "A `public` class `AccountController` was not found in the `WishList.Controllers` namespace.");
 
             var method = accountController.GetMethod("Logout", new Type[] { });
