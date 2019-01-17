@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WishList.Models.AccountViewModels
 {
@@ -7,7 +6,7 @@ namespace WishList.Models.AccountViewModels
     {
         [Required]
         [EmailAddress]
-        public String Email { get; set; }
+        public string Email { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 8)]
         [DataType(DataType.Password)]
