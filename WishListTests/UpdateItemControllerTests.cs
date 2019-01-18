@@ -122,7 +122,7 @@ namespace WishListTests
                                  // from type in assembly.GetTypes()
                                  // where type.FullName == "WishList.Controllers.ItemController"
                                  //select type).FirstOrDefault();
-                                   typeof(WishList.Controllers.AccountController);
+                                   typeof(WishList.Controllers.ItemController);
             Assert.True(itemController != null, "A `public` class `ItemController` was not found in the `WishList.Controllers` namespace.");
 
             var method = itemController.GetMethod("Delete", new Type[] { typeof(int) });
