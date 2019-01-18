@@ -103,7 +103,7 @@ namespace WishListTests
                                  // from type in assembly.GetTypes()
                                  // where type.FullName == "WishList.Models.AccountViewModels.LoginViewModel"
                                  // select type).FirstOrDefault();
-                                  typeof(WishList.Controllers.AccountController);
+                                  typeof(WishList.Models.AccountViewModels.LoginViewModel);
             Assert.True(loginViewModel != null, "A `public` class `LoginViewModel` was not found in the `WishList.Models.AccountViewModels` namespace.");
 
             var method = accountController.GetMethod("Login", new Type[] { loginViewModel });
@@ -146,7 +146,7 @@ namespace WishListTests
                                  // from type in assembly.GetTypes()
                                  //where type.FullName == "WishList.Models.AccountViewModels.LoginViewModel"
                                  // select type).FirstOrDefault();
-                                  typeof(WishList.Controllers.AccountController);
+                                  typeof(WishList.Models.AccountViewModels.LoginViewModel);
             Assert.True(loginViewModel != null, "A `public` class `LoginViewModel` was not found in the `WishList.Models.AccountViewModels` namespace.");
 
             var method = accountController.GetMethod("Login", new Type[] { loginViewModel });
