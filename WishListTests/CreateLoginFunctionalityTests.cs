@@ -92,10 +92,11 @@ namespace WishListTests
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "WishList" + Path.DirectorySeparatorChar + "Controllers" + Path.DirectorySeparatorChar + "AccountController.cs";
             Assert.True(File.Exists(filePath), @"`AccountController.cs` was not found in the `Controllers` folder.");
 
-            var accountController = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+            var accountController =/* (from assembly in AppDomain.CurrentDomain.GetAssemblies()
                                      from type in assembly.GetTypes()
                                      where type.FullName == "WishList.Controllers.AccountController"
-                                     select type).FirstOrDefault();
+                                     select type).FirstOrDefault();*/
+                                     typeof(WishList.Controllers.AccountController);
             Assert.True(accountController != null, "A `public` class `AccountController` was not found in the `WishList.Controllers` namespace.");
 
             var loginViewModel = //(from assembly in AppDomain.CurrentDomain.GetAssemblies()
